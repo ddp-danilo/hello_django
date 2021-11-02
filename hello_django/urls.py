@@ -20,5 +20,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello/', views.hello),
     path('hello/<nome>', views.hello),
-    path('hello/<nome>/<int:idade>', views.hello)
+    path('hello/<nome>/<int:idade>', views.hello),
+    path('soma/<int:d1>/<int:d2>', views.soma),
+    path('soma/<int:d1>', views.soma),
+    path('multi/<int:d1>/<int:d2>', views.multi),
+    path('multi/<int:d1>/', views.multi),
+    path('divi/<int:d1>/<int:d2>', views.divi),
+    path('divi/<int:d1>', views.divi),
+    path('sub/<int:d1>/<int:d2>', views.sub),
+    path('sub/<int:d1>', views.sub)
 ]
