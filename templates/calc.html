@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <title>Calculadora</title>
@@ -7,7 +7,7 @@
 <body>
 <div align="center">
     <h1>Calculadora</h1>
-</divalign>
+</div>
 <div align="center">
     <form action="cal_submit" method="POST">{% csrf_token %}
 
@@ -19,16 +19,14 @@
             <input type="radio" id="soma" name="operacao" value="soma" checked>
             <label for="soma">+</label>
             <input type="radio" id="sub" name="operacao" value="sub">
-            <label for="sub">-</label for="sub">
+            <label for="sub">-</label >
             <input type="radio" id="divi" name="operacao" value="divi">
-            <label for="divi">/</label for="divi">
+            <label for="divi">/</label >
             <input type="radio" id="multi" name="operacao" value="multi">
-            <label for="multi">x</label for="multi">
+            <label for="multi">x</label>
         </div>
-        <button type="cal_submit">Enviar</button>
+        <button type="submit">Enviar</button>
     </form>
-
 </div>
-
 </body>
 </html>
