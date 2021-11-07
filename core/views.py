@@ -1,6 +1,8 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 
 # Create your views here.
+def index(request):
+    return redirect('admin/')
 def hello_text(nome=None, idade=None):
     """retorna o texto para a funcão hello"""
     final_string = 'Hello '
@@ -35,3 +37,14 @@ def divi(request, d1=0, d2=0):
 def sub(request, d1=0, d2=0):
     valor = d1 - d2
     return HttpResponse('A Subtração de {} com {} é {}'.format(d1, d2, valor))
+def calc(request):
+    return render(request, 'calc.html')
+def calc_submit(request):
+    n1 = request.POST.get('n1')
+    n2 = request.POST.get('n2')
+    op = request.POST.get('operacao')
+    if op is not None:
+        return redirect('/{}/{}/{}'.format(op,n1,n2))
+    else:
+        redirect('/calc')
+

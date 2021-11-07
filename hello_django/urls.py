@@ -18,6 +18,7 @@ from django.urls import path
 from core import views
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.index),
     path('hello/', views.hello),
     path('hello/<nome>', views.hello),
     path('hello/<nome>/<int:idade>', views.hello),
@@ -28,5 +29,7 @@ urlpatterns = [
     path('divi/<int:d1>/<int:d2>', views.divi),
     path('divi/<int:d1>', views.divi),
     path('sub/<int:d1>/<int:d2>', views.sub),
-    path('sub/<int:d1>', views.sub)
+    path('sub/<int:d1>', views.sub),
+    path('calc', views.calc),
+    path('cal_submit', views.calc_submit)
 ]
