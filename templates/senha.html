@@ -1,5 +1,21 @@
 {% extends 'model-page.html' %}
 {% block content %}
-    <h1>Agenda</h1>
-
+    <h1>Gerador de Senha</h1>
+    <div>
+        <form method="POST" action="submit">{% csrf_token %}
+            <b>Tamanho:</b>
+            <input type="number" name="tam" min="1" required>
+            <div style="">
+                <b>Codigos:</b>
+                <input type="checkbox" name="sym"><b>Símbolos</b>
+                <input type="checkbox" name="num"><b>Números</b>
+                <input type="checkbox" name="upp"><b>Maiúsculas</b>
+                <input type="checkbox" name="low"><b>Minusculas</b>
+            </div>
+            <button type="submit">Criar Senha</button>
+        </form>
+        {% for message in messages %}
+            <div><textarea>{{ message }}</textarea></div>
+        {% endfor %}
+    </div>
 {% endblock %}

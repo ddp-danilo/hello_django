@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
+from django.contrib import messages
 
 # Create your views here.
 def index(request):
@@ -22,21 +23,25 @@ def hello(request, nome=None, idade=None):
 #calc finctions
 def soma(request, d1=0, d2=0):
     soma = d1 + d2
-    return HttpResponse('A soma de {} com {} é {}'.format(d1, d2, soma))
-
+    messages.info(request, 'A soma de {} com {} é {}'.format(d1, d2, soma))
+    return redirect('/calc')
 def multi(request, d1=0, d2=0):
     prod = d1 * d2
-    return HttpResponse('A Multiplicação de {} com {} é {}'.format(d1, d2, prod))
+    messages.info(request, 'A Multiplicação de {} com {} é {}'.format(d1, d2, prod))
+    return redirect('/calc')
 def divi(request, d1=0, d2=0):
     try:
         quociente = d1 / d2
     except ZeroDivisionError:
-        return HttpResponse('Não é posivel dividir por zero.')
+        messages.error(request, 'Não é possível dividir por zero.')
+        return redirect('/calc')
     else:
-        return HttpResponse('A Divisão de {} com {} é {}'.format(d1, d2, quociente))
+        return messages.info(request, 'A Divisão de {} com {} é {}'.format(d1, d2, quociente))
 def sub(request, d1=0, d2=0):
     valor = d1 - d2
-    return HttpResponse('A Subtração de {} com {} é {}'.format(d1, d2, valor))
+    messages.info(request, 'A Subtração de {} com {} é {}'.format(d1, d2, valor))
+    return redirect('/calc')
+
 def calc(request):
     return render(request, 'calc.html')
 def calc_submit(request):
@@ -44,7 +49,6 @@ def calc_submit(request):
     n2 = request.POST.get('n2')
     op = request.POST.get('operacao')
     if op is not None:
-        return redirect('/{}/{}/{}'.format(op,n1,n2))
+        return redirect('/calc/{}/{}/{}'.format(op,n1,n2))
     else:
-        redirect('/calc')
-
+        return redirect('/calc')

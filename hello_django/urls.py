@@ -15,21 +15,25 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from core import views
+from core import views as viewscore
+from senha import views as viewsenha
+from django.views.generic import RedirectView
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index),
-    path('hello/', views.hello),
-    path('hello/<nome>', views.hello),
-    path('hello/<nome>/<int:idade>', views.hello),
-    path('soma/<int:d1>/<int:d2>', views.soma),
-    path('soma/<int:d1>', views.soma),
-    path('multi/<int:d1>/<int:d2>', views.multi),
-    path('multi/<int:d1>/', views.multi),
-    path('divi/<int:d1>/<int:d2>', views.divi),
-    path('divi/<int:d1>', views.divi),
-    path('sub/<int:d1>/<int:d2>', views.sub),
-    path('sub/<int:d1>', views.sub),
-    path('calc', views.calc),
-    path('cal_submit', views.calc_submit)
+    path('', RedirectView.as_view(url="/calc")),
+    path('hello/', viewscore.hello),
+    path('hello/<nome>', viewscore.hello),
+    path('hello/<nome>/<int:idade>', viewscore.hello),
+    path('calc/soma/<int:d1>/<int:d2>', viewscore.soma),
+    path('calc/soma/<int:d1>', viewscore.soma),
+    path('calc/multi/<int:d1>/<int:d2>', viewscore.multi),
+    path('calc/multi/<int:d1>/', viewscore.multi),
+    path('calc/divi/<int:d1>/<int:d2>', viewscore.divi),
+    path('calc/divi/<int:d1>', viewscore.divi),
+    path('calc/sub/<int:d1>/<int:d2>', viewscore.sub),
+    path('calc/sub/<int:d1>', viewscore.sub),
+    path('calc', viewscore.calc),
+    path('cal_submit', viewscore.calc_submit),
+    path('senha/', viewsenha.senha),
+    path('senha/submit', viewsenha.senha_submit),
 ]
