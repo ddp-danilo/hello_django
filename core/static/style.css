@@ -1,0 +1,31 @@
+body {
+    color:white;
+    background-color:#220000;
+    margin:0px;
+    text-decoration:none;
+}
+.error {
+    color:red;
+}
+.nav-bar {
+    background-color:gray;
+}
+
+.nav-bar {
+    overflow:hidden;
+    text-size:10px;
+    width:100%;
+    padding:5px;
+}
+.nav-bar strong{
+    overflow:hidden;
+}
+.nav-bar a{
+    color:white;
+    padding-right:15px;
+    float:right;
+    text-decoration:none;
+}
+.nav-bar a:hover{
+    color:#bababa;
+}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>DDP</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="nav-bar">
+        <strong>DDP</strong>
+        <a href="/calc">Calculadora</a>
+        <a href="/senha">Senha</a>
+    </div>
+    <div>
+        {% block content %} {% endblock %}
+    </div>
+</body>
+</html>
